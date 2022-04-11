@@ -4,12 +4,13 @@
 #
 Name     : pypi-ansible_pygments
 Version  : 0.1.1
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/0b/35/53891104863a04f69ff761cccd9b11784e19793cd318ecff8f2e5c594401/ansible-pygments-0.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0b/35/53891104863a04f69ff761cccd9b11784e19793cd318ecff8f2e5c594401/ansible-pygments-0.1.1.tar.gz
 Summary  : Tools for building the Ansible Distribution
 Group    : Development/Tools
 License  : BSD-2-Clause
+Requires: pypi-ansible_pygments-license = %{version}-%{release}
 Requires: pypi-ansible_pygments-python = %{version}-%{release}
 Requires: pypi-ansible_pygments-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -19,6 +20,14 @@ BuildRequires : pypi(poetry_core)
 # [Pygments] lexer and style Ansible snippets
 [![GitHub Actions CI/CD workflow](https://github.com/ansible-community/ansible-pygments/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/ansible-community/ansible-pygments/actions/workflows/ci-cd.yml)
 [![Codecov badge](https://img.shields.io/codecov/c/github/ansible-community/ansible-pygments)](https://codecov.io/gh/ansible-community/ansible-pygments)
+
+%package license
+Summary: license components for the pypi-ansible_pygments package.
+Group: Default
+
+%description license
+license components for the pypi-ansible_pygments package.
+
 
 %package python
 Summary: python components for the pypi-ansible_pygments package.
@@ -49,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644192662
+export SOURCE_DATE_EPOCH=1649709701
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -64,6 +73,8 @@ python3 -m build --wheel --skip-dependency-check --no-isolation
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-ansible_pygments
+cp %{_builddir}/ansible-pygments-0.1.1/LICENSE.md %{buildroot}/usr/share/package-licenses/pypi-ansible_pygments/02f46c5154752a0af7d98adae5c78107edf64727
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -71,6 +82,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-ansible_pygments/02f46c5154752a0af7d98adae5c78107edf64727
 
 %files python
 %defattr(-,root,root,-)
