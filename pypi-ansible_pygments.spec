@@ -4,13 +4,12 @@
 #
 Name     : pypi-ansible_pygments
 Version  : 0.1.1
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/0b/35/53891104863a04f69ff761cccd9b11784e19793cd318ecff8f2e5c594401/ansible-pygments-0.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0b/35/53891104863a04f69ff761cccd9b11784e19793cd318ecff8f2e5c594401/ansible-pygments-0.1.1.tar.gz
 Summary  : Tools for building the Ansible Distribution
 Group    : Development/Tools
 License  : BSD-2-Clause
-Requires: pypi-ansible_pygments-filemap = %{version}-%{release}
 Requires: pypi-ansible_pygments-license = %{version}-%{release}
 Requires: pypi-ansible_pygments-python = %{version}-%{release}
 Requires: pypi-ansible_pygments-python3 = %{version}-%{release}
@@ -21,14 +20,6 @@ BuildRequires : pypi(poetry_core)
 # [Pygments] lexer and style Ansible snippets
 [![GitHub Actions CI/CD workflow](https://github.com/ansible-community/ansible-pygments/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/ansible-community/ansible-pygments/actions/workflows/ci-cd.yml)
 [![Codecov badge](https://img.shields.io/codecov/c/github/ansible-community/ansible-pygments)](https://codecov.io/gh/ansible-community/ansible-pygments)
-
-%package filemap
-Summary: filemap components for the pypi-ansible_pygments package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-ansible_pygments package.
-
 
 %package license
 Summary: license components for the pypi-ansible_pygments package.
@@ -50,7 +41,6 @@ python components for the pypi-ansible_pygments package.
 %package python3
 Summary: python3 components for the pypi-ansible_pygments package.
 Group: Default
-Requires: pypi-ansible_pygments-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(ansible_pygments)
 Requires: pypi(pygments)
@@ -71,7 +61,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652992778
+export SOURCE_DATE_EPOCH=1652994809
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,10 +103,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-ansible_pygments
 
 %files license
 %defattr(0644,root,root,0755)
