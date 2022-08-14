@@ -4,7 +4,7 @@
 #
 Name     : pypi-ansible_pygments
 Version  : 0.1.1
-Release  : 7
+Release  : 8
 URL      : https://files.pythonhosted.org/packages/0b/35/53891104863a04f69ff761cccd9b11784e19793cd318ecff8f2e5c594401/ansible-pygments-0.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0b/35/53891104863a04f69ff761cccd9b11784e19793cd318ecff8f2e5c594401/ansible-pygments-0.1.1.tar.gz
 Summary  : Tools for building the Ansible Distribution
